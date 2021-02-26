@@ -2,32 +2,24 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import BubblePage from "./BubblePage";
 
-import { getColors as mockFetchColors } from "./BubblePage";
+import { getColors as mockGetColors } from "../api/getColors";
 
-// jest.mock("./BubblePage");
+jest.mock("../api/getColors");
 
 const bubbleData = [
   { color: "aliceblue", code: { hex: "#f0f8ff" }, id: 1 },
   { color: "limegreen", code: { hex: "#99ddbc" }, id: 2 },
-  { color: "aqua", code: { hex: "#00ffff" }, id: 3 },
-  { color: "aquamarine", code: { hex: "#7fffd4" }, id: 4 },
-  { color: "lilac", code: { hex: "#9a99dd" }, id: 5 },
-  { color: "softpink", code: { hex: "#dd99ba" }, id: 6 },
-  { color: "bisque", code: { hex: "#dd9a99" }, id: 7 },
-  { color: "softyellow", code: { hex: "#dcdd99" }, id: 8 },
-  { color: "blanchedalmond", code: { hex: "#ffebcd" }, id: 9 },
-  { color: "blue", code: { hex: "#6093ca" }, id: 10 },
-  { color: "blueviolet", code: { hex: "#8a2be2" }, id: 11 },
 ];
 
-test("Renders BubblePage without errors", async () => {
+test("Renders BubblePage without errors", () => {
   // Finish this test
-  // mockFetchColors.mockResolvedValueOnce(bubbleData);
   render(<BubblePage />);
 });
 
-test("Fetches data and renders the bubbles on mounting", () => {
+test("Fetches data and renders the bubbles on mounting", async () => {
   // Finish this test
+  mockGetColors.mockResolvedValue(bubbleData);
+  render(<BubblePage />);
 });
 
 //Task List

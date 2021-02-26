@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { useHistory, useParams } from "react-router-dom";
-import axiosWithAuth from "./../helpers/axiosWithAuth";
+import { useHistory } from "react-router-dom";
 
 // username: Lambda School,  password: i<3Lambd4
 

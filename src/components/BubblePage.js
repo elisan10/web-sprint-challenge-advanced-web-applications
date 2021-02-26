@@ -20,7 +20,7 @@ const BubblePage = () => {
         })
         .catch((err) => console.log("Error in get request for colors", err));
     };
-    return getColors();
+    getColors();
   }, [toggle]);
 
   return (

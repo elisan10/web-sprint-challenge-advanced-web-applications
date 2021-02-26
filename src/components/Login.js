@@ -11,25 +11,9 @@ const Login = () => {
     username: "",
     password: "",
   });
-
   const [error, setError] = useState(null);
 
-  const { id } = useParams();
-
   const history = useHistory();
-
-  useEffect(() => {
-    axiosWithAuth()
-      .delete(`/api/colors/${id}`)
-      .then((res) => {
-        axiosWithAuth()
-          .get(`/api/colors`)
-          .then((res) => {
-            console.log(res);
-          });
-        console.log(res);
-      });
-  });
 
   const handleChange = (e) => {
     setFormValue({
@@ -48,7 +32,7 @@ const Login = () => {
 
         //5. If the username / password is equal to Lambda School / i<3Lambd4, save that token to localStorage.
         localStorage.setItem("token", JSON.stringify(res.data.payload));
-        history.push("/bubble-page");
+        history.push("/bubbles");
       })
       .catch((err) => {
         setError(err.response.data.error);

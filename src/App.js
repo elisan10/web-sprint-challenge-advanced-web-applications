@@ -8,6 +8,8 @@ import "./styles.scss";
 
 function App() {
   return (
+    //Task List:
+    //1. Render BubblePage as a PrivateRoute
     <Router>
       <div className="App">
         <Route exact path="/" component={Login} />
@@ -18,6 +20,3 @@ function App() {
 }
 
 export default App;
-
-//Task List:
-//1. Render BubblePage as a PrivateRoute

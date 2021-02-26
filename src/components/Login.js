@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import axiosWithAuth from "./../helpers/axiosWithAuth";
 
 // username: Lambda School,  password: i<3Lambd4
 
@@ -13,29 +14,22 @@ const Login = () => {
 
   const [error, setError] = useState(null);
 
+  const { id } = useParams();
+
   const history = useHistory();
 
   useEffect(() => {
-    axios
-      .delete(`http://localhost:5000/api/colors/1`, {
-        headers: {
-          authorization:
-            "ahuBHejkJJiMDhmODZhZi0zaeLTQ4ZfeaseOGZgesai1jZWYgrTA07i73Gebhu98",
-        },
-      })
+    axiosWithAuth()
+      .delete(`/api/colors/${id}`)
       .then((res) => {
-        axios
-          .get(`http://localhost:5000/api/colors`, {
-            headers: {
-              authorization: "",
-            },
-          })
+        axiosWithAuth()
+          .get(`/api/colors`)
           .then((res) => {
             console.log(res);
           });
         console.log(res);
       });
-  }, []);
+  });
 
   const handleChange = (e) => {
     setFormValue({
@@ -50,7 +44,6 @@ const Login = () => {
     axios
       .post("http://localhost:5000/api/login", formValue)
       .then((res) => {
-        console.log("This is res in login post", res);
         // when you have handled the token, navigate to the BubblePage route
 
         //5. If the username / password is equal to Lambda School / i<3Lambd4, save that token to localStorage.
